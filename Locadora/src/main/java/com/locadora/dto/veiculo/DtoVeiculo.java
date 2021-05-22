@@ -7,9 +7,11 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class DtoVeiculo {
+	
 	public String marca;
 	public String modelo;
 	public String cor;
 	public String placa;
 	public BigDecimal valorDiaria;
+	
 }
