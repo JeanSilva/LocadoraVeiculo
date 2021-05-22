@@ -33,8 +33,38 @@ public class CadastroVeiculo {
 		}
 
 	}
-	
-	public Resposta Teste() {
-		return new Resposta("Veiculo Cadastrado com sucesso!");
+
+	public Resposta excluirVeiculo(String placa) {
+		try {
+
+			Veiculo veiculo = veiculoRepositorio.findByPlacaIs(placa);
+
+			veiculoRepositorio.delete(veiculo);
+			return new Resposta("Veiculo excluido com sucesso");
+
+		} catch (Exception erro) {
+			erro.printStackTrace();
+			return new Resposta("Erro ao Excluir");
+		}
+
 	}
+	public Resposta atualizar(DtoVeiculo dtoVeiculo) {
+		try {
+
+			Veiculo veiculo = veiculoRepositorio.findByPlacaIs(dtoVeiculo.placa);
+
+			veiculo.atualizar(dtoVeiculo.marca, dtoVeiculo.modelo, dtoVeiculo.cor, dtoVeiculo.placa,
+					dtoVeiculo.valorDiaria, dtoVeiculo.disponivel);
+			
+					veiculoRepositorio.save(veiculo);
+			return new Resposta("Veiculo atualizado");
+
+		} catch (Exception erro) {
+			erro.printStackTrace();
+			return new Resposta("Erro ao atualizarr");
+		}
+
+	}
+
+
 }

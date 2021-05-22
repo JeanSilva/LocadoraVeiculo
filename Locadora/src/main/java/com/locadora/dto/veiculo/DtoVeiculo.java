@@ -13,5 +13,6 @@ public class DtoVeiculo {
 	public String cor;
 	public String placa;
 	public BigDecimal valorDiaria;
+	public boolean disponivel;
 	
 }

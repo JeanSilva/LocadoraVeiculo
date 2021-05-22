@@ -21,20 +21,27 @@ public class Veiculo implements IVeiculo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "MARCA")
+	@Column(name = "MARCA", nullable = false)
 	private String marca;
 
-	@Column(name = "MODELO")
+	@Column(name = "MODELO", nullable = false)
 	private String modelo;
 
-	@Column(name = "COR")
+	@Column(name = "COR", nullable = false)
 	private String cor;
 
-	@Column(name = "PLACA")
+	@Column(name = "PLACA", unique = true, nullable = false)
 	private String placa;
 
-	@Column(name = "VALOR_DIARIA")
+	@Column(name = "VALOR_DIARIA", nullable = false)
 	private BigDecimal valorDiaria;
+
+	@Column(name = "DISPONIVEL")
+	private boolean disponivel;
+
+	public Veiculo() {
+
+	}
 
 	public Veiculo(String marca, String modelo, String cor, String placa, BigDecimal valorDiaria) {
 		this.marca = marca;
@@ -42,6 +49,18 @@ public class Veiculo implements IVeiculo {
 		this.cor = cor;
 		this.placa = placa;
 		this.valorDiaria = valorDiaria;
+		this.disponivel = true;
+	}
+
+	public void atualizar(String marca, String modelo, String cor, String placa, BigDecimal valorDiaria,
+			boolean disponivel) {
+		this.marca = marca;
+		this.modelo = modelo;
+		this.cor = cor;
+		this.placa = placa;
+		this.valorDiaria = valorDiaria;
+		this.disponivel = disponivel;
+
 	}
 
 }
