@@ -1,11 +1,13 @@
 package com.locadora.dto.veiculo;
 
 import java.math.BigDecimal;
+
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class DtoVeiculo {
 	
 	public String marca;

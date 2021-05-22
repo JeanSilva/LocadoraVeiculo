@@ -1,5 +1,7 @@
 package com.locadora.aplicacao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +50,7 @@ public class CadastroVeiculo {
 		}
 
 	}
+	
 	public Resposta atualizar(DtoVeiculo dtoVeiculo) {
 		try {
 
@@ -65,6 +68,23 @@ public class CadastroVeiculo {
 		}
 
 	}
-
-
+	
+	public List<Veiculo> listarVeiculosAlugados() {
+		try {
+			return veiculoRepositorio.findByDisponivelIs(false);
+		} catch (Exception erro) {
+			erro.printStackTrace();
+		}		
+		return null;
+	}
+	
+	public List<Veiculo> listarVeiculosDisponiveis() {
+		try {
+			return veiculoRepositorio.findByDisponivelIs(true);
+		} catch (Exception erro) {
+			erro.printStackTrace();
+		}		
+		return null;
+	}	
+	
 }
