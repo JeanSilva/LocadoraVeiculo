@@ -34,7 +34,7 @@ public class Veiculo implements IVeiculo {
 	private String placa;
 
 	@Column(name = "VALOR_DIARIA", nullable = false)
-	private BigDecimal valorDiaria;
+	private double valorDiaria;
 
 	@Column(name = "DISPONIVEL")
 	private boolean disponivel;
@@ -43,7 +43,7 @@ public class Veiculo implements IVeiculo {
 
 	}
 
-	public Veiculo(String marca, String modelo, String cor, String placa, BigDecimal valorDiaria) {
+	public Veiculo(String marca, String modelo, String cor, String placa, double valorDiaria) {
 		this.marca = marca;
 		this.modelo = modelo;
 		this.cor = cor;
@@ -52,7 +52,7 @@ public class Veiculo implements IVeiculo {
 		this.disponivel = true;
 	}
 
-	public void atualizar(String marca, String modelo, String cor, String placa, BigDecimal valorDiaria,
+	public void atualizar(String marca, String modelo, String cor, String placa, double valorDiaria,
 			boolean disponivel) {
 		this.marca = marca;
 		this.modelo = modelo;
@@ -61,6 +61,15 @@ public class Veiculo implements IVeiculo {
 		this.valorDiaria = valorDiaria;
 		this.disponivel = disponivel;
 
+	}
+
+	public void reserva() {
+		this.disponivel = false;
+
+	}
+	public void devolucao() {
+		this.disponivel = true;
+		
 	}
 
 }
