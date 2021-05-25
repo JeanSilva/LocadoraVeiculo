@@ -1,7 +1,5 @@
 package com.locadora.dominio.veiculo;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
 @Table(schema = "SCHEMA_LOCADORA", name = "VEICULO")
@@ -30,7 +27,7 @@ public class Veiculo implements IVeiculo {
 	@Column(name = "COR", nullable = false)
 	private String cor;
 
-	@Column(name = "PLACA", unique = true, nullable = false)
+	@Column(name = "PLACA", nullable = false)
 	private String placa;
 
 	@Column(name = "VALOR_DIARIA", nullable = false)
@@ -65,7 +62,7 @@ public class Veiculo implements IVeiculo {
 
 	public void reserva() {
 		this.disponivel = false;
-
+	
 	}
 	public void devolucao() {
 		this.disponivel = true;

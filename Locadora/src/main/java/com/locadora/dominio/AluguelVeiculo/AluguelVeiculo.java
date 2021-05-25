@@ -1,21 +1,16 @@
 package com.locadora.dominio.AluguelVeiculo;
 
-import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.aspectj.lang.annotation.Before;
-import org.springframework.stereotype.Service;
 
 import com.locadora.dominio.pessoa.Pessoa;
 import com.locadora.dominio.veiculo.Veiculo;
@@ -31,14 +26,14 @@ public class AluguelVeiculo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToOne
-	@JoinColumn(name = "VEICULO", nullable = false)
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "VEICULO_ID")
 	private Veiculo veiculo;
 
-	@OneToOne
-	@JoinColumn(name = "PESSOA", nullable = false)
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "PESSOA_ID")
 	private Pessoa pessoa;
-
+  
 	@Column(name = "DATA_RETIRADA", nullable = false)
 	private Date dataRetirada;
 
@@ -52,6 +47,7 @@ public class AluguelVeiculo {
 		this.veiculo = veiculo;
 		this.pessoa = pessoa;
 		this.dataDevolucao = dataDevolucao;
+		this.dataRetirada = new Date();
 		this.veiculo.reserva();
 		calcularValorTotal(veiculo.getValorDiaria());
 

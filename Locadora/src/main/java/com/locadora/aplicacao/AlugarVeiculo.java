@@ -21,10 +21,11 @@ public class AlugarVeiculo {
 	private PessoaRepositorio pessoaRepositorio;
 
 	@Autowired
-	public AlugarVeiculo(AlugarVeiculoRepositorio alugarVeiculoRepositorio, VeiculoRepositorio veiculoRepositorio) {
+	public AlugarVeiculo(AlugarVeiculoRepositorio alugarVeiculoRepositorio, VeiculoRepositorio veiculoRepositorio, PessoaRepositorio pessoaRepositorio) {
 
 		this.alugarVeiculoRepositorio = alugarVeiculoRepositorio;
 		this.veiculoRepositorio = veiculoRepositorio;
+		this.pessoaRepositorio = pessoaRepositorio;
 
 	}
 
